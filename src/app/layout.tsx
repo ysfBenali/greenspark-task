@@ -21,7 +21,14 @@ export const metadata: Metadata = {
     title,
     description,
     url,
-    images: [],
+    images: [
+      {
+        url: `${url}/assets/thumbnail/thumbnail.svg`,
+        width: 800,
+        height: 400,
+        alt: 'greenspark',
+      },
+    ],
   },
   icons: {
     icon: [
