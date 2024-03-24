@@ -16,9 +16,9 @@ import { cn } from '@/lib/utils';
 
 interface ProductWidgetProps extends React.HTMLAttributes<HTMLDivElement> {
   data: ProductData;
-  onActiveProductToggle: (id: number) => void;
-  onProfileLinkToggle: (id: number) => void;
-  onWidgetColorChange: (id: number, color: string) => void;
+  onActiveProductToggle?: (id: number) => void;
+  onProfileLinkToggle?: (id: number) => void;
+  onWidgetColorChange?: (id: number, color: string) => void;
 }
 
 const colorsMapping: { [key: string]: string } = {
@@ -130,7 +130,9 @@ const ProductWidget = forwardRef<HTMLDivElement, ProductWidgetProps>(
           <Checkbox
             id={`public-profile${id}`}
             checked={linked}
-            onClick={() => onProfileLinkToggle(id)}
+            onClick={() => {
+              if (onProfileLinkToggle) onProfileLinkToggle(id);
+            }}
           />
         </div>
 
@@ -147,7 +149,9 @@ const ProductWidget = forwardRef<HTMLDivElement, ProductWidgetProps>(
                     'border-2 border-gray-400': selectedColor === color,
                   })}
                   style={{ backgroundColor: colorsMapping[color] || '#FFFF' }}
-                  onClick={() => onWidgetColorChange(id, color)}
+                  onClick={() => {
+                    if (onWidgetColorChange) onWidgetColorChange(id, color);
+                  }}
                 />
               );
             })}
@@ -164,7 +168,9 @@ const ProductWidget = forwardRef<HTMLDivElement, ProductWidgetProps>(
           <Switch
             id={`activate-badge${id}`}
             checked={active}
-            onCheckedChange={() => onActiveProductToggle(id)}
+            onCheckedChange={() => {
+              if (onActiveProductToggle) onActiveProductToggle(id);
+            }}
           />
         </div>
       </div>
