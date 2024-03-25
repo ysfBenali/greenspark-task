@@ -27,12 +27,19 @@ const Page = async () => {
   return (
     <main className="flex w-full h-full items-center justify-center p-8">
       <div className="shadow-2xl p-9 rounded-lg w-[851px] min-h-[419px] max-w-[90vw]">
-        <h1 className="font-[700] text-[30px] leading-[36px] text-center lg:text-start pb-1">
+        <h1
+          className="font-[700] text-[30px] leading-[36px] text-center lg:text-start pb-1"
+          role="heading"
+        >
           Per product widgets
         </h1>
-        <hr className="mt-2 mb-4 border-2 border-solid border-silver" />
+        <hr
+          className="mt-2 mb-4 border-2 border-solid border-silver"
+          role="separator"
+        />
         <ProductWidgetList
           className="flex justify-between items-center max-lg:flex-col max-lg:gap-y-9 p-1"
+          title="Product widget list"
           data={data}
         />
       </div>

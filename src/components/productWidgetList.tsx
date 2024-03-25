@@ -56,6 +56,7 @@ const ProductWidgetList = forwardRef<HTMLDivElement, ProductWidgetListProps>(
           return (
             <ProductWidget
               key={id}
+              title={`${rest.type} widget`}
               data={{ id, ...rest }}
               onActiveProductToggle={handleActiveProductToggle}
               onProfileLinkToggle={handleProfileLinkToggle}

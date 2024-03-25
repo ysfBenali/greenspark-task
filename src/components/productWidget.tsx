@@ -29,7 +29,7 @@ const colorsMapping: { [key: string]: string } = {
   black: '#212121',
 };
 
-const measurementUnits: {
+export const measurementUnits: {
   [key: string]: string;
 } = {
   'plastic bottles': 'plastic bottles',
@@ -60,6 +60,7 @@ const ProductWidget = forwardRef<HTMLDivElement, ProductWidgetProps>(
       >
         <div
           className={cn('flex items-center space-x-2 rounded-md p-3')}
+          data-testid={`product-widget-badge-${id}`}
           style={{
             backgroundColor: colorsMapping[selectedColor],
           }}
@@ -96,6 +97,7 @@ const ProductWidget = forwardRef<HTMLDivElement, ProductWidgetProps>(
             <label
               className="text-sm leading-[17px] font-normal cursor-pointer"
               htmlFor={`public-profile${id}`}
+              role="label"
             >
               link to public profile
             </label>
@@ -137,10 +139,10 @@ const ProductWidget = forwardRef<HTMLDivElement, ProductWidgetProps>(
         </div>
 
         <div className="flex justify-between items-center text-forest-green capitalize">
-          <label className="text-sm leading-[17px] font-normal">
+          <label className="text-sm leading-[17px] font-normal" role="label">
             badge color
           </label>
-          <div className="flex justify-between w-24">
+          <div className="flex justify-between w-24" role="radio-group">
             {Object.keys(colorsMapping)?.map((color) => {
               return (
                 <button
@@ -152,6 +154,9 @@ const ProductWidget = forwardRef<HTMLDivElement, ProductWidgetProps>(
                   onClick={() => {
                     if (onWidgetColorChange) onWidgetColorChange(id, color);
                   }}
+                  data-testid={`color-pick-${color}`}
+                  role="radio"
+                  aria-checked={selectedColor === color}
                 />
               );
             })}
@@ -162,6 +167,7 @@ const ProductWidget = forwardRef<HTMLDivElement, ProductWidgetProps>(
           <label
             className="text-sm leading-[17px] font-normal cursor-pointer"
             htmlFor={`activate-badge${id}`}
+            role="label"
           >
             activate badge
           </label>
