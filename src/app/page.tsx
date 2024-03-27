@@ -38,7 +38,7 @@ const Page = async () => {
           role="separator"
         />
         <ProductWidgetList
-          className="flex justify-between items-center max-lg:flex-col max-lg:gap-y-9 p-1"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6 justify-center content-center"
           title="Product widget list"
           data={data}
         />
